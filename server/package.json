@@ -1,0 +1,25 @@
+{
+  "name": "tableau-embedding-app-server",
+  "private": true,
+  "version": "1.0.0",
+  "description": "API for enabling Tableau embedding.",
+  "author": "Rushabh Javeri",
+  "license": "MIT",
+  "scripts": {
+    "start": "node src/main.js",
+    "dev": "nodemon src/main.js"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22",
+    "prisma": "^4.15.0"
+  },
+  "dependencies": {
+    "@prisma/client": "^4.15.0",
+    "axios": "^1.4.0",
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.1.4",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0"
+  }
+}
