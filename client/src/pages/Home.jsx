@@ -29,7 +29,7 @@ function Home() {
         {loading ? (
           <p>Loading...</p>
         ) : (
-          <ul className="flex flex-wrap items-center gap-x-5 gap-y-3 max-w-3xl p-6">
+          <ul className="flex flex-wrap items-center justify-center gap-x-5 gap-y-4 max-w-3xl p-6">
             {sites.map(site => (
               <li key={site.id}>
                 <Link
@@ -59,7 +59,7 @@ function Home() {
                     clipRule="evenodd"
                   ></path>
                 </svg>
-                Create New Site
+                Add New Site
               </Link>
             </li>
           </ul>
