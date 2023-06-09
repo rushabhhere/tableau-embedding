@@ -6,8 +6,25 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Site {
+  id                   String @id @default(uuid())
+  name                 String
+  tableau_username     String
+  tableau_client_id    String
+  tableau_secret_id    String
+  tableau_secret_value String
+  tableau_pat_name     String
+  tableau_pat_secret   String
+  tableau_api_base_url String
+  tableau_site_id      String
+  tableau_site_name    String
+  user                 User   @relation(fields: [userId], references: [id])
+  userId               String
 }
 
 model User {
@@ -15,6 +32,7 @@ model User {
   email        String @unique
   passwordHash String
   role         Role   @default(EDITOR)
+  sites        Site[]
 }
 
 enum Role {
