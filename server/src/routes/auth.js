@@ -15,6 +15,7 @@ router.get('/user', isAuthenticated, (req, res) => {
       id: req.user.id,
       email: req.user.email,
       role: req.user.role,
+      sites: req.user.sites,
     },
   });
 });

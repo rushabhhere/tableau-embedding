@@ -2,7 +2,7 @@ import { useContext, useEffect } from 'react';
 import { AuthContext } from '../contexts/AuthContext';
 import { useLocation } from 'wouter';
 
-function Workspace() {
+function Workspace({ params }) {
   const { user } = useContext(AuthContext);
   const [, setLocation] = useLocation();
 
@@ -12,7 +12,7 @@ function Workspace() {
     }
   }, [user]);
 
-  return <div>Workspace</div>;
+  return <div>Workspace {params.siteId}</div>;
 }
 
 export default Workspace;
