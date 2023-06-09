@@ -13,6 +13,7 @@ app.use(cookieParser());
 
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api', require('./routes/db'));
+app.use('/api/tableau', require('./routes/tableau'));
 
 app.use('*', (_req, res) => {
   res.sendFile('index.html', { root: 'public' });

@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from 'react';
+import { useLocation } from 'wouter';
 
 export const AuthContext = createContext();
 
@@ -67,8 +68,11 @@ export function AuthProvider({ children }) {
     });
     const response = await data.json();
 
+    const [, setLocation] = useLocation();
+
     if (!response.error) {
       setUser(null);
+      setLocation('/login');
     } else {
       throw new Error(response.message);
     }

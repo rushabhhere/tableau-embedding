@@ -58,7 +58,7 @@ router.post('/sites', isAuthenticated, async (req, res) => {
       site,
     });
   } catch (error) {
-    console.log(error.message);
+    console.error(error.message);
 
     return res.json({
       error: true,
