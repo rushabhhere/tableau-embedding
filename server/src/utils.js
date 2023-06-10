@@ -77,9 +77,24 @@ async function getViews(
   });
 }
 
+async function getSiteId(apiBaseUrl, patName, patSecret, siteName) {
+  const { data } = await axios.post(`${apiBaseUrl}/auth/signin`, {
+    credentials: {
+      personalAccessTokenName: patName,
+      personalAccessTokenSecret: patSecret,
+      site: {
+        contentUrl: siteName,
+      },
+    },
+  });
+
+  return data.credentials.site.id;
+}
+
 module.exports = {
   getRequestHeader,
   getProjects,
   getWorkbooks,
   getViews,
+  getSiteId,
 };

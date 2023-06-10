@@ -10,7 +10,6 @@ function CreateSite() {
   const [tableauPatName, setTableauPatName] = useState('');
   const [tableauPatSecret, setTableauPatSecret] = useState('');
   const [tableauApiBaseUrl, setTableauApiBaseUrl] = useState('');
-  const [tableauSiteId, setTableauSiteId] = useState('');
   const [tableauSiteName, setTableauSiteName] = useState('');
 
   const [, setLocation] = useLocation();
@@ -31,7 +30,6 @@ function CreateSite() {
           tableau_pat_name: tableauPatName,
           tableau_pat_secret: tableauPatSecret,
           tableau_api_base_url: tableauApiBaseUrl,
-          tableau_site_id: tableauSiteId,
           tableau_site_name: tableauSiteName,
         }),
       });
@@ -114,14 +112,6 @@ function CreateSite() {
           value={tableauApiBaseUrl}
           onChange={e => setTableauApiBaseUrl(e.target.value)}
           placeholder="Tableau API Base URL"
-        />
-        <input
-          className="px-3 py-2 rounded-md border-2 border-blue-600 outline-none mt-3"
-          type="text"
-          required
-          value={tableauSiteId}
-          onChange={e => setTableauSiteId(e.target.value)}
-          placeholder="Tableau Site ID"
         />
         <input
           className="px-3 py-2 rounded-md border-2 border-blue-600 outline-none mt-3"

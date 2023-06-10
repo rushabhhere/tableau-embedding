@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const { PrismaClient } = require('@prisma/client');
 const isAuthenticated = require('../middleware/isAuthenticated');
+const { getSiteId } = require('../utils');
 
 const router = Router();
 const prisma = new PrismaClient();
@@ -28,11 +29,17 @@ router.post('/sites', isAuthenticated, async (req, res) => {
     tableau_pat_name,
     tableau_pat_secret,
     tableau_api_base_url,
-    tableau_site_id,
     tableau_site_name,
   } = req.body;
 
   try {
+    const tableau_site_id = await getSiteId(
+      tableau_api_base_url,
+      tableau_pat_name,
+      tableau_pat_secret,
+      tableau_site_name
+    );
+
     const site = await prisma.site.create({
       data: {
         name,
