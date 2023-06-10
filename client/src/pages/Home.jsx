@@ -1,9 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link } from 'wouter';
+import { AuthContext } from '../contexts/AuthContext';
+import Loading from '../components/Loading';
 
 function Home() {
   const [sites, setSites] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { userLoading } = useContext(AuthContext);
 
   useEffect(() => {
     const getSites = async () => {
@@ -19,8 +22,18 @@ function Home() {
       setLoading(false);
     };
 
-    getSites();
-  });
+    if (!userLoading) {
+      getSites();
+    }
+  }, [userLoading]);
+
+  if (userLoading) {
+    return (
+      <div className="h-screen bg-blue-200 grid place-items-center">
+        <Loading />
+      </div>
+    );
+  }
 
   return (
     <div className="h-screen flex flex-col items-center justify-center bg-blue-200">

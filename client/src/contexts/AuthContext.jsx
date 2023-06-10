@@ -1,5 +1,4 @@
 import { createContext, useEffect, useState } from 'react';
-import { useLocation } from 'wouter';
 
 export const AuthContext = createContext();
 
