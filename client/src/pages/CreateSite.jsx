@@ -85,7 +85,7 @@ function CreateSite() {
         />
         <input
           className="px-3 py-2 rounded-md border-2 border-blue-600 outline-none mt-3"
-          type="text"
+          type="password"
           required
           value={tableauSecretValue}
           onChange={e => setTableauSecretValue(e.target.value)}
@@ -101,7 +101,7 @@ function CreateSite() {
         />
         <input
           className="px-3 py-2 rounded-md border-2 border-blue-600 outline-none mt-3"
-          type="text"
+          type="password"
           required
           value={tableauPatSecret}
           onChange={e => setTableauPatSecret(e.target.value)}

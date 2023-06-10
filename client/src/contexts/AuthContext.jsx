@@ -62,17 +62,14 @@ export function AuthProvider({ children }) {
     }
   };
 
-  const logout = async () => {
+  const logOut = async () => {
     const data = await fetch('/api/auth/logout', {
       method: 'POST',
     });
     const response = await data.json();
 
-    const [, setLocation] = useLocation();
-
     if (!response.error) {
       setUser(null);
-      setLocation('/login');
     } else {
       throw new Error(response.message);
     }
@@ -80,7 +77,7 @@ export function AuthProvider({ children }) {
 
   return (
     <AuthContext.Provider
-      value={{ login, register, logout, user, userLoading }}
+      value={{ login, register, logOut, user, userLoading }}
     >
       {children}
     </AuthContext.Provider>

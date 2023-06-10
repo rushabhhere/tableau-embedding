@@ -1,12 +1,15 @@
 import { useContext, useState } from 'react';
 import { WorkspaceContext } from '../contexts/WorkspaceContext';
 import ProjectDisplay from './ProjectDisplay';
+import SearchViews from './SearchViews';
 import { useLocation } from 'wouter';
+import { AuthContext } from '../contexts/AuthContext';
 
 function Sidebar({ projects }) {
   const [search, setSearch] = useState('');
-  const { sidebarOpen, logOut, setEdit, activeView, setActiveView } =
+  const { sidebarOpen, setEdit, activeView, setActiveView } =
     useContext(WorkspaceContext);
+  const { logOut } = useContext(AuthContext);
 
   const [, setLocation] = useLocation();
 
@@ -16,6 +19,15 @@ function Sidebar({ projects }) {
       return setActiveView(null);
     }
     setLocation('/');
+  };
+
+  const handleLogOut = async () => {
+    try {
+      await logOut();
+      setLocation('/login');
+    } catch (error) {
+      alert(error.message);
+    }
   };
 
   return (
@@ -68,7 +80,7 @@ function Sidebar({ projects }) {
           <span className="font-medium">Go Back</span>
         </button>
         <button
-          onClick={logOut}
+          onClick={handleLogOut}
           className="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 text-white flex-1 py-2 rounded-md self-center"
         >
           <svg

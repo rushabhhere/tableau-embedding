@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { WorkspaceContext } from '../../contexts/WorkspaceContext';
+import { WorkspaceContext } from '../contexts/WorkspaceContext';
 import ViewWithPath from './ViewWithPath';
 
 function SearchViews({ search, projects, resetSearch }) {
