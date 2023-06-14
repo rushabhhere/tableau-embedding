@@ -6,7 +6,7 @@ import Loading from '../components/Loading';
 function Home() {
   const [sites, setSites] = useState([]);
   const [loading, setLoading] = useState(true);
-  const { userLoading } = useContext(AuthContext);
+  const { userLoading, user } = useContext(AuthContext);
 
   useEffect(() => {
     const getSites = async () => {
@@ -22,10 +22,10 @@ function Home() {
       setLoading(false);
     };
 
-    if (!userLoading) {
+    if (!userLoading && user) {
       getSites();
     }
-  }, [userLoading]);
+  }, [userLoading, user]);
 
   if (userLoading) {
     return (

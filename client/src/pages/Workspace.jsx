@@ -28,7 +28,7 @@ function Workspace({ params }) {
     };
 
     getProjects();
-  });
+  }, [params.siteId]);
 
   if (loading) {
     return (
